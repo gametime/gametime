@@ -1,0 +1,21 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'website/home.css' %}" />
+
+<header>
+
+	{% load static %}
+	<img class='logo' src="{% static 'website/logo.png' %}" alt="logo.png" ></code>
+
+	<h1 class="titre">GameTime</h1>
+
+</header>
+
+{% for terrain in terrain %}
+	<div class="terrain">
+		<h3>Nom : {{ terrain.nom }}</h3>
+		<p>Sport : {{ terrain.sport.nom }}</p>
+		<p>Etat : {{ terrain.etat }}</p>
+	</div>
+{% empty %}
+
+{% endfor %}

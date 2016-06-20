@@ -1,0 +1,26 @@
+header
+{
+	display: flex;
+	border-width: 3px;
+	border-color: rgb(0,162,232);
+	border-style: solid;
+}
+
+.logo
+{
+	width: 10%;
+	height: 15%;
+}
+
+.titre
+{
+	color: rgb(0,162,232);
+	width: 80%;
+	text-align: center;
+}
+
+#bouton
+{
+	width: 100px;
+	background-color: pink;
+}

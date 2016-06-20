@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'website/home.css' %}" />
+
+
+<header>
+
+	{% load static %}
+	<img class='logo' src="{% static 'website/logo.png' %}" alt="logo.png" ></code>
+
+	<h1 class="titre">GameTime</h1>
+
+</header>
+
+<nav>
+	{% for sport in sport %}
+		<div class="sport">
+			<a href="{% url "website.views.sport" sport.nom %}"><button id="bouton"><h3>{{ sport.nom }}</h3></button></a>
+		</div>
+	{% empty %}
+
+	{% endfor %}
+
+
+    <button id="bouton2">Cliquez-moi !</button>
+    
+    {% load static %}
+	<script type="text/javascript" src="{% static 'website/home.js' %}"></script>
+
+</nav>
