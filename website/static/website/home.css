@@ -1,3 +1,4 @@
+
 header
 {
 	display: flex;
@@ -5,6 +6,21 @@ header
 	border-color: rgb(0,162,232);
 	border-style: solid;
 }
+
+nav
+{
+	float: left;
+	height: 1000px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+section
+{
+
+
+}
+
 
 .logo
 {

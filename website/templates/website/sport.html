@@ -1,21 +1,46 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'website/home.css' %}" />
+<!DOCTYPE html>
+<html>
 
-<header>
-
+<body>
 	{% load static %}
-	<img class='logo' src="{% static 'website/logo.png' %}" alt="logo.png" ></code>
+	<link rel="stylesheet" href="{% static 'website/home.css' %}" />
 
-	<h1 class="titre">GameTime</h1>
+	<header>
+		{% load static %}
+		<a href="{% url "website.views.home" %}"><img class='logo' src="{% static 'website/logo.png' %}" alt="logo.png" ></code></a>
 
-</header>
+		<h1 class="titre">GameTime</h1>
 
-{% for terrain in terrain %}
-	<div class="terrain">
-		<h3>Nom : {{ terrain.nom }}</h3>
-		<p>Sport : {{ terrain.sport.nom }}</p>
-		<p>Etat : {{ terrain.etat }}</p>
-	</div>
-{% empty %}
+	</header>
 
-{% endfor %}
+	<nav>
+		{% for sport in sport %}
+			<div class="sport">
+				<a href="{% url "website.views.sport" sport.nom %}"><button id="bouton"><h3>{{ sport.nom }}</h3></button></a>
+			</div>
+		{% empty %}
+
+		{% endfor %}
+
+
+	    <button id="bouton2">Cliquez-moi !</button>
+	    
+	    {% load static %}
+		<script type="text/javascript" src="{% static 'website/home.js' %}"></script>
+
+	</nav>
+
+	<section>
+
+		{% for terrain in terrain %}
+				<h3>Nom : {{ terrain.nom }}</h3>
+				<p>Sport : {{ terrain.sport.nom }}</p>
+				<p>Etat : {{ terrain.etat }}</p>
+		{% empty %}
+
+		{% endfor %}
+
+
+	</section>
+</body>
+</html>
