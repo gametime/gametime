@@ -12,7 +12,7 @@ def home(request):
 def sport(request, spt):
 	sports = Sport.objects.all()
 	terrain = Terrain.objects.filter(sport__nom = spt)
-	return render(request, 'website/sport.html',{'sport': sports, 'terrain': terrain})
+	return render(request, 'website/sport.html',{'terrain': terrain, 'sport': spt})
 
 def contact(request):
     if request.method == 'POST':  # S'il s'agit d'une requête POST

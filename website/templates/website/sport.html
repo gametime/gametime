@@ -1,46 +1,108 @@
 <!DOCTYPE html>
-<html>
 
+{% load static %}
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Les Guez">
+    <title>Sports</title>
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="{% static 'website/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'website/css/freelancer.css' %}" rel="stylesheet">
+    <link href="{% static 'website/css/auguste.css' %}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{% static 'website/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
 <body>
-	{% load static %}
-	<link rel="stylesheet" href="{% static 'website/home.css' %}" />
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'website.views.home' %}">Game Time</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="index.html#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="index.html#portfolio">Sports</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="index.html#about">A propos</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
-	<header>
-		{% load static %}
-		<a href="{% url "website.views.home" %}"><img class='logo' src="{% static 'website/logo.png' %}" alt="logo.png" ></code></a>
+    <!-- En tête -->
+    <header class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-lg-12">
+                        <h3>{{ sport }}</h3>
+                        <hr class="star-light">
+                    </div>
 
-		<h1 class="titre">GameTime</h1>
+                </div>
+            </div>
+    </header>
 
-	</header>
+    <!-- Liste des terrains -->
+    <table class="table table-hover">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Terrain</th>
+                            <th>Adresse</th>
+                            <th>Etat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{% for terrain in terrain %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ terrain.nom }}</td>
+                            <td>{{ terrain.lieu }}</td>
+                            <td>{{ terrain.etat }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </div>
+        </div>
+      </div>
 
-	<nav>
-		{% for sport in sport %}
-			<div class="sport">
-				<a href="{% url "website.views.sport" sport.nom %}"><button id="bouton"><h3>{{ sport.nom }}</h3></button></a>
-			</div>
-		{% empty %}
-
-		{% endfor %}
-
-
-	    <button id="bouton2">Cliquez-moi !</button>
-	    
-	    {% load static %}
-		<script type="text/javascript" src="{% static 'website/home.js' %}"></script>
-
-	</nav>
-
-	<section>
-
-		{% for terrain in terrain %}
-				<h3>Nom : {{ terrain.nom }}</h3>
-				<p>Sport : {{ terrain.sport.nom }}</p>
-				<p>Etat : {{ terrain.etat }}</p>
-		{% empty %}
-
-		{% endfor %}
-
-
-	</section>
+</table>
 </body>
 </html>
