@@ -20,7 +20,6 @@ from website import views
 urlpatterns = [
 	url(r'^$', views.home),
     url(r'^home/?$', views.home),
-    url(r'^home/(\w+)$', views.sport),
-    url(r'^contact/?$', views.contact),
+    url(r'^home/sport/(\w+)$', views.sport),
     url(r'^admin/', include(admin.site.urls)),
 ]

@@ -45,16 +45,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
-                        <a href="index.html#page-top"></a>
+                        <a href="{% url 'website.views.home' %}"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="index.html#portfolio">Sports</a>
+                        <a href="{% url 'website.views.home' %}">Sports</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="index.html#about">A propos</a>
+                        <a href="{% url 'website.views.home' %}">A propos</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="index.html#contact">Contact</a>
+                        <a href="{% url 'website.views.home' %}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -95,7 +95,11 @@
                             <th scope="row">{{ forloop.counter }}</th>
                             <td>{{ terrain.nom }}</td>
                             <td>{{ terrain.lieu }}</td>
-                            <td>{{ terrain.etat }}</td>
+                            {% if terrain.etat %}
+                            <td><img style="width: 25px; height: 25px;" class="img-responsive" src="{% static 'website/img/feuvert.png' %}" alt="libre"></td>
+                            {% else %}
+                            <td><img style="width: 25px; height: 25px;" class="img-responsive" src="{% static 'website/img/feurouge.png' %}" alt="occupé"></td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
