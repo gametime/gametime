@@ -21,5 +21,6 @@ urlpatterns = [
 	url(r'^$', views.home),
     url(r'^home/?$', views.home),
     url(r'^home/sport/(\w+)$', views.sport),
+    url(r'^home/sport/(\w+)/(\w+)$', views.sportAvecChangementEtat),
     url(r'^admin/', include(admin.site.urls)),
 ]

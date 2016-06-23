@@ -39,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{% url 'website.views.home' %}">Game Time</a>
+                <a class="navbar-brand" href="{% url 'website.views.home' %}" id="titre">Game Time</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -86,7 +86,7 @@
                             <th>#</th>
                             <th>Terrain</th>
                             <th>Adresse</th>
-                            <th>Etat</th>
+                            <th>Disponibilité</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,9 +96,13 @@
                             <td>{{ terrain.nom }}</td>
                             <td>{{ terrain.lieu }}</td>
                             {% if terrain.etat %}
-                            <td><img style="width: 25px; height: 25px;" class="img-responsive" src="{% static 'website/img/feuvert.png' %}" alt="libre"></td>
+                            <td><a href="{% url 'website.views.sportAvecChangementEtat' sport terrain.id %}"">
+                            	<img style="width: 25px; height: 25px;" " class="img-responsive" src="{% static 'website/img/feuvert.png' %}" alt="libre">
+                            </a></td>
                             {% else %}
-                            <td><img style="width: 25px; height: 25px;" class="img-responsive" src="{% static 'website/img/feurouge.png' %}" alt="occupé"></td>
+                            <td><a href="{% url 'website.views.sportAvecChangementEtat' sport terrain.id %}"">
+                            	<img style="width: 25px; height: 25px;" class="img-responsive" src="{% static 'website/img/feurouge.png' %}" alt="occupé">
+                            </a></td>
                             {% endif %}
                         </tr>
                         {% endfor %}

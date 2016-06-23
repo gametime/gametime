@@ -14,5 +14,11 @@ def sport(request, spt):
 	terrain = Terrain.objects.filter(sport__nom = spt)
 	return render(request, 'website/sport.html',{'terrain': terrain, 'sport': spt})
 
-
+def sportAvecChangementEtat(request, spt, id):
+    terrain = Terrain.objects.get(id=id)
+    terrain.etat = not(terrain.etat)
+    terrain.save()
+    sports = Sport.objects.all()
+    terrain = Terrain.objects.filter(sport__nom = spt)
+    return render(request, 'website/sport.html',{'terrain': terrain, 'sport': spt})
 
